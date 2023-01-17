@@ -2,8 +2,14 @@ server:
   port: ${PORT:8081}
 
 spring:
+
+  main:
+    allow-bean-definition-overriding: true
+    allow-circular-references: true
+
   application:
     name: product-api
+
 
   datasource:
     driver-class-name: org.postgresql.Driver
@@ -17,7 +23,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
       format_sql: true
     show_sql: true
     properties:

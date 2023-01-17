@@ -12,7 +12,7 @@ public class SupplierResponse {
 
   public static SupplierResponse of(Supplier supplier) {
     var response = new SupplierResponse();
-    BeanUtils.copyProperties( supplier, response);
+    BeanUtils.copyProperties(supplier, response);
     return response;
   }
 }

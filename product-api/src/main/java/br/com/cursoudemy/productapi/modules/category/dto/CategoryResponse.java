@@ -12,7 +12,7 @@ public class CategoryResponse {
 
   public static CategoryResponse of(Category category) {
     var response = new CategoryResponse();
-    BeanUtils.copyProperties( category, response);
+    BeanUtils.copyProperties(category,response);
     return response;
   }
 }
