@@ -19,8 +19,8 @@ export async function createInitialData() {
         ],
         user: {
             id: "daksdjaksfasçlfasf",
-            name: 'User Teste',
-            email: 'usertest@gmail.com'
+            name: 'User Teste 1',
+            email: 'teste@email.com'
         },
         status: 'APPROVED',
         createdAt: new Date(),
@@ -40,7 +40,7 @@ export async function createInitialData() {
         user: {
             id: "beryytryrtwyubyvjykjybkjyu",
             name: 'User Teste 2',
-            email: 'usertest2@gmail.com'
+            email: 'teste2@email.com'
         },
         status: 'REJECTED',
         createdAt: new Date(),

@@ -6,11 +6,15 @@ export const MONGO_DB_URL = env.MONGO_DB_URL
 
 
 export const API_SECRET = env.API_SECRET 
-? env.API_SECRET 
-: "YXV0aC1hcGktc2VjcmV0LWRldi0zNDcyMzAxNzYyODI4OTQxMDU2MTQ=";
+    ? env.API_SECRET 
+    : "YXV0aC1hcGktc2VjcmV0LWRldi0zNDcyMzAxNzYyODI4OTQxMDU2MTQ=";
 
 
 export const RABBIT_MQ_URL = env.API_SECRET 
-? env.API_SECRET 
-: "amqp://localhost:5672";
+    ? env.API_SECRET 
+    : "amqp://localhost:5672";
+
+export const PRODUCT_API_URL = env.PRODUCT_API_URL
+    ? env.PRODUCT_API_URL
+    : "http://localhost:8081/api/product";
 
