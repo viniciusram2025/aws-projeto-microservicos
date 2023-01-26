@@ -6,17 +6,39 @@ import { connectRabbitMq } from './src/config/rabbitmq/rabbitConfig.js';
 
 import checkToken from './src/config/auth/checkToken.js';
 import orderRoutes from './src/modules/sales/routes/OrderRoutes.js';
-
+import tracing from "./src/config/tracing.js";
 
 const app = express();
 const env = process.env;
 const PORT = env.PORT || 8082;
+const CONTAINER_ENV = "container";
+const THREE_MINUTES = 180000;
 
-connectMongoDB();
-//createInitialData();
-connectRabbitMq();
+startApplication();
+
+async function startApplication() {
+  if (CONTAINER_ENV === env.NODE_ENV) {
+    console.info("Waiting for RabbitMQ and MongoDB containers to start...");
+    setInterval(() => {
+      connectMongoDB();
+      connectRabbitMq();
+    }, THREE_MINUTES);
+  } else {
+    connectMongoDB();
+    createInitialData();
+    connectRabbitMq();
+  }
+}
 
 app.use(express.json());
+
+app.get("/api/initial-data", async (req, res) => {
+    await createInitialData();
+    return res.json({ message: "Data created." });
+});
+
+
+app.use(tracing);
 app.use(checkToken);
 app.use(orderRoutes);
 

@@ -3,13 +3,15 @@ import axios from 'axios';
 import { PRODUCT_API_URL } from '../../../config/constants/secrets.js';
 
 class ProductClient {
-    async checkProductStock(productsData, token) {
+    async checkProductStock(productsData, token, transactionid) {
         try {
-            const headers = { Authorization: token };
-            console.info(`Sending request to Product API with data: ${JSON.stringify(productsData)}`);
+            const headers = { Authorization: token, transactionid };
+            console.info(
+                `Sending request to Product API with data: ${JSON.stringify(productsData)}
+                 and transactionID: ${transactionid}`
+            );
 
             let response = false;
-            console.log(productsData.products);
             await axios
                 .post(
                     `${PRODUCT_API_URL}/check-stock`,
@@ -17,14 +19,16 @@ class ProductClient {
                     { headers }
                 )
                 .then((res) => {
+                    console.info(`Success response from Product-API. TransactionID: ${transactionid}`);
                     response = true
-                })
+                  })
                 .catch((err) => {
-                    console.error(err.response.message);
+                    console.error(`Error response from Product-API. TransactionID: ${transactionid}`);
                     response = false
                 });
             return response;
         } catch (err) {
+            console.error(`Error response from Product-API. TransactionID: ${transactionid}`);
             return false;
         }
     }
