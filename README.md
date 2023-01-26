@@ -24,7 +24,7 @@ Projeto acadêmico porém funcionando, com objetivo de comunicar microserviços 
 São 3 API's desenvolvidas: 
 
 - Auth-API: API de Autenticação com Node.js 16, Express.js, Sequelize, PostgreSQL, JWT e Bcrypt.
-- Sales-API: API de Vendas com Node.js 14, Express.js, MongoDB, Mongoose, validação de JWT, RabbitMQ e Axios para clients HTTP.
+- Sales-API: API de Vendas com Node.js 16, Express.js, MongoDB, Mongoose, validação de JWT, RabbitMQ e Axios para clients HTTP.
 - Product-API: API de Produtos com Java 11, Spring Boot, Spring Data JPA, PostgreSQL, validação de JWT, RabbitMQ.
 
 Cada microserviço rodando com containers docker via docker-compose.
