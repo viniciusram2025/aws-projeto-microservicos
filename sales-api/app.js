@@ -38,18 +38,20 @@ app.get("/api/initial-data", async (req, res) => {
 });
 
 
+app.get('/api/status', (req, res) => {
+  return res.status(200).json({
+      service: 'Sales-api',
+      status: 'up',
+      httpStatus: 200,
+  });
+});
+
 app.use(tracing);
 app.use(checkToken);
 app.use(orderRoutes);
 
 
-app.get('/api/status', (req, res) => {
-    return res.status(200).json({
-        service: 'Sales-api',
-        status: 'up',
-        httpStatus: 200,
-    });
-});
+
 
 app.listen(PORT, () => {
     console.info(`Server started successfully at port ${PORT}`);
