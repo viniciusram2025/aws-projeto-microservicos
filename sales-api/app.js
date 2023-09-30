@@ -32,18 +32,23 @@ async function startApplication() {
 
 app.use(express.json());
 
-app.get("/api/initial-data", async (req, res) => {
-    await createInitialData();
-    return res.json({ message: "Data created." });
+app.get('/', (req, res) => {
+  return res.status(200).json(getOkResponse());
+});
+app.get('/api/status', (req, res) => {
+  return res.status(200).json(getOkResponse());
 });
 
-
-app.get('/api/status', (req, res) => {
-  return res.status(200).json({
+function getOkResponse() {
+ return  {
       service: 'Sales-api',
       status: 'up',
       httpStatus: 200,
-  });
+ }
+}
+app.get("/api/initial-data", async (req, res) => {
+  await createInitialData();
+  return res.json({ message: "Data created." });
 });
 
 app.use(tracing);
